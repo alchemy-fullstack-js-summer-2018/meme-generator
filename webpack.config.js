@@ -1,3 +1,4 @@
+/* eslint-env node */
 const { resolve } = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
@@ -10,7 +11,7 @@ module.exports = {
   output: {
     path,
     filename: 'bundle.[hash].js',
-    publicPath: '/docs'
+    publicPath: ''
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -21,4 +22,31 @@ module.exports = {
     new CleanPlugin(`${path}/bundle.*.js`),
     new HtmlPlugin({ template: './src/index.html' })
   ],
+  module: {
+    rules: [
+      // js
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: ['last 2 versions', 'safari >= 7']
+                },
+              }],
+              
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'),
+              require('babel-plugin-transform-class-properties')
+            ],
+            cacheDirectory: true
+          }
+        }
+      }
+    ]
+  }
 };
