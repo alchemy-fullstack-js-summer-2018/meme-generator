@@ -26,7 +26,30 @@ module.exports = {
     new CleanPlugin(`${path}/bundle.*.js`),
     new HTMLPlugin({ template: './src/index.html' })
   ],
-  devServer: {
-    contentBase: './docs'
+  module: {
+    rules: [
+      // js
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: 'Chrome 65'
+                },
+              }],
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'),
+              require('babel-plugin-transform-class-properties')
+            ],
+            cacheDirectory: true
+          }
+        }
+      }
+    ]
   }
 }
