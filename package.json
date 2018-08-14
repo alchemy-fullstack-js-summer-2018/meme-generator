@@ -1,0 +1,37 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "## Project Description Stay tuned!",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariahAdams/meme-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariahAdams/meme-generator/issues"
+  },
+  "homepage": "https://github.com/MariahAdams/meme-generator#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "jest": "^23.5.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
