@@ -41,6 +41,7 @@ module.exports = {
                   browsers: 'Chrome 65'
                 },
               }],
+              'react'
             ],
             plugins: [
               require('babel-plugin-transform-object-rest-spread'),
