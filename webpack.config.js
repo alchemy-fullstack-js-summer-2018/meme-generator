@@ -17,6 +17,9 @@ module.exports = {
   },
   // mode (will eventually be cmd line arg in package.json scripts)
   mode: 'development',
+  devServer: {
+    contentBase: './docs',
+  },
   plugins: [
   new CleanWebpackPlugin(`${path}/bundle.*.js`), 
   new HtmlPlugin({ template: './src/index.html' })
