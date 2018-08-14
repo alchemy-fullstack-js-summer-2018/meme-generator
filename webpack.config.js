@@ -15,6 +15,11 @@ module.exports = {
     publicPath: ''
   },
 
+  plugins: [
+    new CleanWebpackPlugin(`${path}/bundle.*.js`),
+  ],
+  
+
 
  
 }
