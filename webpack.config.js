@@ -16,5 +16,8 @@ module.exports = {
     publicPath: ''
   },
   // mode (will eventually be cmd line arg in package.json scripts)
-  mode: 'development'
+  mode: 'development',
+  plugins: [
+  new CleanWebpackPlugin(`${path}/bundle.*.js`), 
+  ]
 };
