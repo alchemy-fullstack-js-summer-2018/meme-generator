@@ -1,0 +1,21 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carmenvramos/meme-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carmenvramos/meme-generator/issues"
+  },
+  "homepage": "https://github.com/carmenvramos/meme-generator#readme"
+}
