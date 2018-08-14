@@ -1,6 +1,7 @@
 /* eslint-env node */
 const { resolve } = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
 const buildDir = 'docs';
 const path = resolve(__dirname, buildDir);
 
@@ -22,6 +23,7 @@ module.exports = {
   },
   plugins: [
     // add plugins
-    new CleanPlugin(`${path}/bundle.*.js`)
+    new CleanPlugin(`${path}/bundle.*.js`),
+    new HTMLPlugin({ template: './src/index.html' })
   ]
 }
