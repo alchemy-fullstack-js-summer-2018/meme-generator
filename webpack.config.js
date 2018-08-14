@@ -14,6 +14,9 @@ module.exports = {
     publicPath: ''
   },
   mode: 'development',
+  devServer: {
+    contentBase: `./${buildDir}`
+  },
   plugins: [
     new CleanPlugin(`${path}/bundle.*.js`),
     new HtmlPlugin({ template: './src/index.html' })
