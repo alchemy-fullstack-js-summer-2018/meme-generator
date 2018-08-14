@@ -1,0 +1,25 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "Them memes",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run jest",
+    "jest": "jest",
+    "test:watch": "npm run jest -- --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quintam26/meme-generator.git"
+  },
+  "author": "Mario Quintana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quintam26/meme-generator/issues"
+  },
+  "homepage": "https://github.com/Quintam26/meme-generator#readme"
+}
