@@ -25,5 +25,8 @@ module.exports = {
     // add plugins
     new CleanPlugin(`${path}/bundle.*.js`),
     new HTMLPlugin({ template: './src/index.html' })
-  ]
+  ],
+  devServer: {
+    contentBase: './docs'
+  }
 }
