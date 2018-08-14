@@ -6,7 +6,11 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "npm run jest"
+    "test": "npm run jest",
+    "jest": "jest",
+    "test:watch": "npm run jest -- --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
   },
   "repository": {
     "type": "git",
@@ -17,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/arthurjen/meme-generator/issues"
   },
-  "homepage": "https://github.com/arthurjen/meme-generator#readme"
+  "homepage": "https://github.com/arthurjen/meme-generator#readme",
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
 }
