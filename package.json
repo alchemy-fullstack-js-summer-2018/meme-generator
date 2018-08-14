@@ -1,0 +1,21 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurjen/meme-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arthurjen/meme-generator/issues"
+  },
+  "homepage": "https://github.com/arthurjen/meme-generator#readme"
+}
