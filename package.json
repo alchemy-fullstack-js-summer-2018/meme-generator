@@ -1,0 +1,25 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0",
+    "jest": "jest",
+    "test:watch": "npm run jest -- --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Markalope/meme-generator.git"
+  },
+  "author": "Mark Myers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Markalope/meme-generator/issues"
+  },
+  "homepage": "https://github.com/Markalope/meme-generator#readme"
+}
