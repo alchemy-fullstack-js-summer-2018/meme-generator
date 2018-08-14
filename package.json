@@ -1,0 +1,28 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "Generate the freshest memes.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run jest",
+    "jest": "jest",
+    "test:watch": "npm run jest -- --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AttilaTheHen/meme-generator.git"
+  },
+  "author": "Injoong Yoon <injoongyoon@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AttilaTheHen/meme-generator/issues"
+  },
+  "homepage": "https://github.com/AttilaTheHen/meme-generator#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0"
+  }
+}
