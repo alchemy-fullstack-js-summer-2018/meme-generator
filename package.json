@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/Rehmsy/meme-generator#readme",
   "devDependencies": {
-    "eslint": "^5.3.0"
+    "eslint": "^5.3.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }
