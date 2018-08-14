@@ -19,5 +19,6 @@ module.exports = {
   mode: 'development',
   plugins: [
   new CleanWebpackPlugin(`${path}/bundle.*.js`), 
+  new HtmlPlugin({ template: './src/index.html' })
   ]
 };
