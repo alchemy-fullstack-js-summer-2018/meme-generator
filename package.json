@@ -1,0 +1,28 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easton-john/meme-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easton-john/meme-generator/issues"
+  },
+  "homepage": "https://github.com/easton-john/meme-generator#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}
