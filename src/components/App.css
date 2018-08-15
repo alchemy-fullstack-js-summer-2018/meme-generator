@@ -1,6 +1,8 @@
 :local(.app) {
 
     pre {
+      width: 1000px;
+      height: 1000px;
       padding: 30px;
       font-size: 40px;
       color: white;

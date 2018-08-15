@@ -6,12 +6,17 @@ import styles from './App.css';
 class App extends Component {
 
     state = {
-        content: 'Helllooo!',
-        url: 'https://orig00.deviantart.net/fb7d/f/2018/081/d/1/meme_template_by_delightfuldiamond7-dc5pdin.png'
+        topcontent: '¿Cuál es el precio de la tortilla?',
+        bottomcontent: ' No soy la señora de la casa',
+        url: 'https://cms.qz.com/wp-content/uploads/2017/01/mexican-president-enrique-pena-nieto-e1485451572857.jpg?quality=75&strip=all&w=1600'
     };
  
-    handleContentChange = (content = ' ') => {
-        this.setState({ content });
+    handleTopContentChange = (topcontent = ' ') => {
+        this.setState({ topcontent });
+    };
+
+    handleBottomContentChange = (bottomcontent = ' ') => {
+        this.setState({ bottomcontent });
     };
 
     handleBackgroundChoose = (url = ' ') => {
@@ -26,20 +31,21 @@ class App extends Component {
     };
 
     render() {
-        const { content, url } = this.state;
+        const { topcontent, bottomcontent, url } = this.state;
 
         return (
             <main className={styles.app}>
                 <section>
                 <h2>Set Options</h2>
-                <Content content={content} onChange={this.handleContentChange}/>
+                <TopContent topcontent={topcontent} onChange={this.handleContentChange}/>
+                <BottomContent bottomcontent={bottomcontent} onChange={this.handleContentChange}/>
                 <Background url={url} onChoose={this.handleBackgroundChoose}/>
                 </section>
 
                 <section className="cow-say">
                     <h2>The Meme Generator</h2>
                     <p ref={node => this.image = node}>
-                        <MemeSay content={content}  url={url}/>
+                        <MemeSay topcontent={topcontent}  bottomcontent={bottomcontent} url={url}/>
                     </p>
                     <p>
                         <button onClick={this.handleExport}>Export</button>
@@ -51,10 +57,11 @@ class App extends Component {
     }
 }
 
-function MemeSay({ content, url }) {
+function MemeSay({ topcontent, bottomcontent, url }) {
     return (
         <Fragment>
-          <pre style={{ background: `url(${url}) no-repeat` }}>{content}</pre>
+          <pre style={{ background: `url(${url}) no-repeat` }}>{topcontent}</pre>
+          <pre>{bottomcontent}</pre>
         </Fragment>
       );
     }
@@ -73,19 +80,33 @@ function Background({ url, onChoose }) {
     );
   }
 
-function Content({ content, onChange }) {
+function TopContent({ topcontent, onChange }) {
   return (
     <p>
       <label>
-        Content: 
+        Top Content: 
         <input 
-          value={content} 
+          value={topcontent} 
           onChange={({ target }) => onChange(target.value)}
         />
       </label>
     </p>
   );
 }
+
+function BottomContent({ bottomcontent, onChange }) {
+    return (
+      <p>
+        <label>
+          Bottom Content: 
+          <input 
+            value={bottomcontent} 
+            onChange={({ target }) => onChange(target.value)}
+          />
+        </label>
+      </p>
+    );
+  }
  
 
 export default App;
