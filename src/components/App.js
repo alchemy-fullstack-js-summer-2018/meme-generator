@@ -9,7 +9,7 @@ class App extends Component {
     memeHeader: 'Meme Header',
     memeFooter: 'Meme Footer',
     url: 'https://i.pinimg.com/736x/01/09/ca/0109cab1811844ab02c614a1281e520c--baby-koala-koala-bears.jpg'
-  }
+  };
 
   handleContentChange = ({ target }) => {
     this.setState({
@@ -30,14 +30,14 @@ class App extends Component {
   };
 
   handleBackgroundChoose = (url = '') => {
-    this.setState({ url })
+    this.setState({ url });
   };
 
   handleExport = () => {
-    const meme = document.getElementById('meme')
+    const meme = document.getElementById('meme');
     dom2image.toBlob(meme)
       .then(blob => {
-        fileSaver.saveAs(blob, 'awesome-meme.png')
+        fileSaver.saveAs(blob, 'awesome-meme.png');
       });
   };
 
@@ -85,11 +85,11 @@ function Background({ url, onChoose }) {
   return (
     <label>
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
-          <input type="file" onChange={({ target }) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(target.files[0]);
-            reader.onload = () => onChoose(reader.result);
-          }}/>
+      <input type="file" onChange={({ target }) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = () => onChoose(reader.result);
+      }}/>
     </label>
   );
 }
