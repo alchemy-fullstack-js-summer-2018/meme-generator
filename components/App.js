@@ -9,7 +9,7 @@ class App extends Component {
     content: 'Meme Generator',
     memes: [],
     meme: 'default',
-    url: 'https://images.pexels.com/photos/416202/pexels-photo-416202.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' 
+    url: 'https://i.imgur.com/hGkOZ.jpg' 
   };
 
   handleContentChange = ({ target }) => {
