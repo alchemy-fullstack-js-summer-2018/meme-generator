@@ -15,5 +15,8 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: `./${buildDir}`,
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(`${path}/bundle.*.js`),
+  ]
 };
