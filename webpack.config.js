@@ -21,5 +21,26 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`),
     new HtmlPlugin({ template: './src/index.html' })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: 'Chrome 65'
+                  // browsers: ['last 2 versions', 'safari >=7']
+                },
+              }],
+            ]
+          }
+        }
+      }
+    ]
+  }
 };
