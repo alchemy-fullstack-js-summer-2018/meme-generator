@@ -1,4 +1,3 @@
-
 /* eslint-env node */
 
 const { resolve } = require('path');
@@ -66,10 +65,10 @@ module.exports = {
                   importLoaders: 1 
                 }
               },
-              // {
-              //   loader: 'postcss-loader',
-              //   options: { sourceMap: true }
-              // }
+              {
+                loader: 'postcss-loader',
+                options: { sourceMap: true }
+              }
             ]
           },
     
@@ -78,7 +77,7 @@ module.exports = {
             test: /\.(jpg|png|svg)$/,
             use: {
               loader: 'url-loader',
-              options: { limit: 500 },
+              options: { limit: 1000 },
             },
           }
         ]

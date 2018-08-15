@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import cowsay from 'cowsay-browser';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 import styles from './App.css';
@@ -8,19 +7,7 @@ class App extends Component {
 
     state = {
         content: 'Helllooo!',
-        cows: [],
-        cow: 'default',
         url: 'https://orig00.deviantart.net/fb7d/f/2018/081/d/1/meme_template_by_delightfuldiamond7-dc5pdin.png'
-    };
-
-    componentDidMount() {
-        cowsay.list((err, cows) => {
-          this.setState({ cows });
-        });
-      }
-
-    handleCowSelect = (cow = 'default') => {
-        this.setState({ cow });
     };
  
     handleContentChange = (content = ' ') => {
@@ -34,92 +21,71 @@ class App extends Component {
     handleExport = () => {
         dom2image.toBlob(this.image)
             .then(blob => {
-                fileSaver.saveAs(blob, 'cute-cowsay.png');
+                fileSaver.saveAs(blob, 'chad-meme.png');
             });
     };
 
     render() {
-        const { content, cows, cow, url } = this.state;
+        const { content, url } = this.state;
 
         return (
             <main className={styles.app}>
                 <section>
                 <h2>Set Options</h2>
                 <Content content={content} onChange={this.handleContentChange}/>
-                <SelectCow cows={cows} onSelect={this.handleCowSelect}/>
                 <Background url={url} onChoose={this.handleBackgroundChoose}/>
                 </section>
 
                 <section className="cow-say">
                     <h2>The Meme Generator</h2>
                     <p ref={node => this.image = node}>
-                        <CowSay content={content} cow={cow} url={url}/>
+                        <MemeSay content={content}  url={url}/>
                     </p>
                     <p>
                         <button onClick={this.handleExport}>Export</button>
                     </p>
                 </section>
+
             </main>
         );
     }
 }
 
-function CowSay({ content, cow, url }) {
-    const cowSaid = cowsay.say({
-    text: content || ' ',
-    f: cow
-    });
-
+function MemeSay({ content, url }) {
     return (
         <Fragment>
-            <pre style={{ background: `url(${url})` }}>{cowSaid}</pre>
+          <pre style={{ background: `url(${url}) no-repeat` }}>{content}</pre>
         </Fragment>
-    );
-}
+      );
+    }
 
 function Background({ url, onChoose }) {
     return (
-        <label>
-            Background:
-            <input value={url} onChange={({ target }) => onChoose(target.value)}/>
-            <input type="file" onChange={({ target }) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(target.files[0]);
-            reader.onload = () => onChoose(reader.result);
-            }}/>
-        </label>
+      <label>
+        Background: 
+        <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+        <input type="file" onChange={({ target }) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(target.files[0]);
+          reader.onload = () => onChoose(reader.result);
+        }}/>
+      </label>
     );
-}
-
-function SelectCow({ cows, onSelect }){
-    return (
-        <p>
-            <label>
-                Cow:
-                <select onChange={({ target }) => onSelect(target.value)}>
-                    <option value="">Choose a Cow</option>
-                    {cows.map(cow => (
-                        <option key={cow} value={cow}>{cow}</option>
-                    ))}
-
-                </select>
-            </label>
-        </p>
-    );
-}
+  }
 
 function Content({ content, onChange }) {
-    return (
-        <p>
-            <label>
-                Content:
-                <input
-                    value={content}
-                    onChange={({ target }) => onChange(target.value)}
-                />
-            </label>
-        </p>
-    );
+  return (
+    <p>
+      <label>
+        Content: 
+        <input 
+          value={content} 
+          onChange={({ target }) => onChange(target.value)}
+        />
+      </label>
+    </p>
+  );
 }
+ 
 
 export default App;
