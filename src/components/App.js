@@ -6,10 +6,15 @@ class App extends Component {
 
   state = {
     content: 'Enter Text Here',
+    url: 'http://worldwidewalrusweb.com'
   };
 
   handleContentChange = (content = '') => {
     this.setState({ content });
+  };
+
+  handleBackgroundChoose = (url = '') => {
+    this.setState({ url });
   };
   
   handleExport = () => {
@@ -17,5 +22,9 @@ class App extends Component {
       .then(blob => {
         fileSaver.saveAs(blob, 'meme-image.png');
       });
+  };
+
+  render() {
+    const { content, url } = this.state;
   }
 }
