@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styles from './App.css';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
@@ -105,13 +105,13 @@ function Background({ url, onChoose }) {
 function MemeGenerator({ memeHeader, memeFooter, url }) {
 
   return (
-    <Fragment>
-      <section id="background" style={{ background: `url(${url}) center/auto 100% no-repeat ` }}>
-        <h2>{memeHeader}</h2>
-        <br/>
-        <h2>{memeFooter}</h2>
-      </section>
-    </Fragment>
+    
+    <section id="meme-picture" style={{ background: `url(${url}) center/auto 100% no-repeat ` }}>
+      <h2>{memeHeader}</h2>
+      <br/>
+      <h2>{memeFooter}</h2>
+    </section>
+  
   );
 }
 
