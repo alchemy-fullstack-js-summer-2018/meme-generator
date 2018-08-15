@@ -1,0 +1,11 @@
+:local(.app) {
+  div {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    height: 100%;
+  }
+
+  .meme {
+    height: 450px;
+  }
+}
