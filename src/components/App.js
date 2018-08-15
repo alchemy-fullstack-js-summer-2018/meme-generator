@@ -6,7 +6,7 @@ class App extends Component {
     content: 'Let\'s meme!',
     memeHeader: 'Meme Header',
     memeFooter: 'Meme Footer',
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIPS9VeFtecRovTEZmWFWl6RtmscJLkz7a6carZ9-IqY0ZOGPJwA'
+    url: 'https://i.pinimg.com/736x/01/09/ca/0109cab1811844ab02c614a1281e520c--baby-koala-koala-bears.jpg'
   }
 
   handleContentChange = ({ target }) => {
@@ -41,7 +41,7 @@ class App extends Component {
           <input value={content} onChange={this.handleContentChange}/>
           <label>Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/></label>
           <label>Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/></label>
-          <label>Add image:<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
+          <label>Add image (400px):<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
         </section>
 
         <section className="meme-say">

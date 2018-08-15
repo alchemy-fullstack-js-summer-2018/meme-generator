@@ -11,21 +11,17 @@
 
   .input-container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-evenly;
   }
 
   .meme-container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
   }
 
-  #meme-header {
-    align-self: flex-start;
-  }
-
-  #meme-footer {
-    align-self: flex-end;
-  }
 }
