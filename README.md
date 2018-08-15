@@ -14,11 +14,10 @@ Requires Node v10 or later.
 ### How to use features
 * Connect to server with `npm start`.
 * Customize your meme by:
-    * editing the header and footer inputs
-    * adding your own image via the text box or choosing a local file
-* Click `save meme!`.
-
-- Known bug: local images will save better than links (CORS issue)
+    * Editing the header and footer inputs,
+    * Adding your own image via pasting a link in the text box or choosing a local file,
+    - Known bug: local images will save better than certain links (CORS issue)
+* Click `Save Meme!`.
 
 ## Contributor
 [Mariah Adams](https://github.com/MariahAdams)
