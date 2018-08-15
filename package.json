@@ -1,0 +1,23 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinhood182/meme-generator.git"
+  },
+  "keywords": [],
+  "author": "Robyn Navarro <rnavarro182@gmail.com> (https://github.com/robinhood182)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robinhood182/meme-generator/issues"
+  },
+  "homepage": "https://github.com/robinhood182/meme-generator#readme",
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
+  }
+}
