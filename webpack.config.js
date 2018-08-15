@@ -15,15 +15,75 @@ module.exports = {
     publicPath: ''
   },
 
-  plugins: [
-    new CleanWebpackPlugin(`${path}/bundle.*.js`),
-    new HtmlPlugin({ template: './src/index.html' })
-  ],
-  
   devServer: {
     contentBase: './docs',
 },
 
 
- 
+  plugins: [
+    new CleanWebpackPlugin(`${path}/bundle.*.js`),
+    new HtmlPlugin({ template: './src/index.html' })
+  ],
+  
+  module: {
+    rules: [
+      // js
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: 'Chrome 65'
+                  // browsers: ['last 2 versions', 'safari >= 7']
+                },
+              }],
+              'react'
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'),
+              require('babel-plugin-transform-class-properties'),
+            ],
+            cacheDirectory: true
+          }
+        }
+      },
+    
+
+      // css
+    //   {
+    //     test: /\.css$/,
+    //     use: [
+    //       {
+    //         loader: 'style-loader',
+    //         options: { sourceMap: true }
+    //       },
+    //       {
+    //         loader: 'css-loader',
+    //         options: { 
+    //           sourceMap: true,
+    //           importLoaders: 1 
+    //         }
+    //       },
+    //       {
+    //         loader: 'postcss-loader',
+    //         options: { sourceMap: true }
+    //       }
+    //     ]
+    //   },
+
+    //   // images
+    //   {
+    //     test: /\.(jpg|png|svg)$/,
+    //     use: {
+    //       loader: 'url-loader',
+    //       options: { limit: 1000 },
+    //     },
+    //   }
+    ]
+  }
+      
 }
