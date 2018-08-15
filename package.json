@@ -6,7 +6,10 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "exit 0"
+    "test": "npm run jest",
+    "jest": "jest",
+    "test:watch": "npm run jest -- --watch",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
