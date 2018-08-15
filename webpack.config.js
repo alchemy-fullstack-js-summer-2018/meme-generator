@@ -1,3 +1,4 @@
+
 /* eslint-env node */
 
 const { resolve } = require('path');
@@ -20,7 +21,7 @@ module.exports = {
       contentBase: `./${buildDir}`,
     },
     plugins: [
-        new CleanPlugin(`${path}/bundle.js`),
+        new CleanPlugin(`${path}/bundle.*.js`),
         new HtmlPlugin({ template: './src/index.html' })
     ]
 }
