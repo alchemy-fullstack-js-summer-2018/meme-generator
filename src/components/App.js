@@ -26,7 +26,7 @@ render() {
       </section>
 
       <section>
-        <Meme url={url}/>
+        <Meme content={content} url={url}/>
         </section>
 
     </main>
@@ -37,7 +37,7 @@ render() {
 function Meme  ({ content, url }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat` }}></div>
+      <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
       </Fragment> 
   )
 }
