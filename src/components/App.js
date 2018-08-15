@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import cowsay from 'cowsay-browser';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
@@ -41,7 +41,34 @@ class App extends Component {
                 </section>
             </main>
         );
-    };
-};
+    }
+}
+
+function CowSay({ content, cow, url }) {
+    const cowSaid = cowsay.say({
+    text: content || ' ',
+    f: cow
+    });
+
+    return (
+        <Fragment>
+            <pre style={{ background: `url(${url})`}}>{cowSaid}</pre>
+        </Fragment>
+    );
+}
+
+function Content({ content, onChange }) {
+    return (
+        <p>
+            <label>
+                Content:
+                <input
+                    value={content}
+                    onChange={({ target }) => onChange(target.value)}
+                />
+            </label>
+        </p>
+    );
+}
 
 export default App;
