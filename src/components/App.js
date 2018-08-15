@@ -10,7 +10,7 @@ class App extends Component {
           Hello React!!!
         </p>
       </main>
-    )
+    );
   }
 }
 
