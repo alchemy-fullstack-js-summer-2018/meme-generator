@@ -27,11 +27,9 @@ class App extends Component {
           <p>More text here</p>
         </section>
 
-        <section className={styles.dankMeme}>
+        <section className='dank-meme'>
           <h2>Here Be Your Dank Meme</h2>
-          <h3 ref={node => this.image = node}>
-            <AddText content={content} url={url}/>
-          </h3>
+          <AddText content={content} url={url}/>
         </section>
       </main>
     );
@@ -55,12 +53,7 @@ function Content({ content, onChange }) {
 function AddText({ url, content }) {
   return (
     <Fragment>
-      <p style={
-        {
-          background: `url(${url}) no-repeat center center fixed`,
-          backgroundSize: '100%'
-        }
-      }>{content}</p>
+      <div style={{ background: `url(${url})` }}>{content}</div>
     </Fragment>
   );
 }
