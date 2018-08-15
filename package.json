@@ -9,7 +9,8 @@
     "test": "npm run jest",
     "jest": "jest",
     "test:watch": "npm run jest -- --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --open --mode development"
   },
   "repository": {
     "type": "git",
