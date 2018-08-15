@@ -9,8 +9,15 @@ class App extends Component {
     state = {
         content: 'Helllooo!',
         cows: [],
-        cow: 'default'
+        cow: 'default',
+        url: 'https://orig00.deviantart.net/fb7d/f/2018/081/d/1/meme_template_by_delightfuldiamond7-dc5pdin.png'
     };
+
+    componentDidMount() {
+        cowsay.list((err, cows) => {
+          this.setState({ cows });
+        });
+      }
 
     handleCowSelect = (cow = 'default') => {
         this.setState({ cow });
@@ -20,14 +27,27 @@ class App extends Component {
         this.setState({ content });
     };
 
+    handleBackgroundChoose = (url = ' ') => {
+        this.setState({ url })
+    }
+
+    handleExport = () => {
+        dom2image.toBlob(this.image)
+            .then(blob => {
+                fileSaver.saveAs(blob, 'cute-cowsay.png');
+            });
+    };
+
     render() {
         const { content, cows, cow, url } = this.state;
 
         return (
-            <main className="App">
+            <main className={styles.app}>
                 <section>
                 <h2>Set Options</h2>
                 <Content content={content} onChange={this.handleContentChange}/>
+                <SelectCow cows={cows} onSelect={this.handleCowSelect}/>
+                <Background url={url} onChoose={this.handleBackgroundChoose}/>
                 </section>
 
                 <section className="cow-say">
@@ -52,8 +72,39 @@ function CowSay({ content, cow, url }) {
 
     return (
         <Fragment>
-            <pre style={{ background: `url(${url})`}}>{cowSaid}</pre>
+            <pre style={{ background: `url(${url})` }}>{cowSaid}</pre>
         </Fragment>
+    );
+}
+
+function Background({ url, onChoose }) {
+    return (
+        <label>
+            Background:
+            <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+            <input type="file" onChange={({ target }) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(target.files[0]);
+            reader.onload = () => onChoose(reader.result);
+            }}/>
+        </label>
+    );
+}
+
+function SelectCow({ cows, onSelect }){
+    return (
+        <p>
+            <label>
+                Cow:
+                <select onChange={({ target }) => onSelect(target.value)}>
+                    <option value="">Choose a Cow</option>
+                    {cows.map(cow => (
+                        <option key={cow} value={cow}>{cow}</option>
+                    ))}
+
+                </select>
+            </label>
+        </p>
     );
 }
 
