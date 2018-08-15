@@ -5,7 +5,6 @@ const HTMLPlugin = require('html-webpack-plugin');
 const buildDir = 'docs';
 const path = resolve(__dirname, buildDir);
 
-
 module.exports = {
   // start here
   entry: './src/index.js',
