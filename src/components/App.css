@@ -5,6 +5,16 @@
     height: 400px;
   }
 
+  label {
+    margin: 6px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
   .meme-container {
     display: flex;
     flex-direction: column;

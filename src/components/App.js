@@ -36,12 +36,12 @@ class App extends Component {
 
     return (
       <main className={styles.app}>
-        <section>
+        <section className="input-container">
           <h2>Content you are looking for</h2>
           <input value={content} onChange={this.handleContentChange}/>
-          Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/>
-          Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/>
-          <Background url={url} onChoose={this.handleBackgroundChoose}/>
+          <label>Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/></label>
+          <label>Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/></label>
+          <label>Add image:<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
         </section>
 
         <section className="meme-say">
