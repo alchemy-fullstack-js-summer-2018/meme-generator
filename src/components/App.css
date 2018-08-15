@@ -13,29 +13,23 @@
   }
 
   h3 {
-    font-size: 4em;
-    font-family: Impact;
+    font-size: 3.3em;
     color: white;
-    -webkit-text-stroke: 3px black;
-    margin: 0px;
+    -webkit-text-stroke: 2px black;
+    margin: 25px;
     text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: black 1px 0 10px;
   }
 
   #meme {
-    margin: 50px;
+    font-family: Impact;
     height: 500px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-size: auto 500px;
-  }
-
-  #header {
-    // align-self: flex-start;
-  }
-
-  #footer {
-    // align-self: flex-end;
   }
 }

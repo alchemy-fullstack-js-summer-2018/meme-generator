@@ -5,21 +5,27 @@ import dom2image from 'dom-to-image';
 
 class App extends Component {
   state = {
-    // url: 'https://i.ytimg.com/vi/KeM_b3O8kNQ/maxresdefault.jpg',
-    // url: 'https://images.unsplash.com/photo-1534312434688-7897cc47352a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9402e911c4071ac355a45deda0c8c7ff&auto=format&fit=crop&w=1951&q=80',
     url: 'https://amp.thisisinsider.com/images/5abb9e6a3216741c008b462d-750-563.jpg',
-    header: 'Header Here',
-    footer: 'Footer Here'
+    header: 'Header',
+    footer: 'Footer'
   };
 
   handleUrlChange = (url = '') => {
     this.setState({ url });
   };
+
   handleHeaderChange = (header = '') => {
     this.setState({ header });
   };
+
   handleFooterChange = (footer = '') => {
     this.setState({ footer });
+  };
+
+  handleExport = () => {
+    const meme = document.getElementById('meme');
+    dom2image.toBlob(meme)
+      .then(blob => fileSaver.saveAs(blob, 'my-meme.png'));
   };
 
   render() {
@@ -32,10 +38,12 @@ class App extends Component {
         <Background url={url} onSelect={this.handleUrlChange}/>
         <Header header={header} onChange={this.handleHeaderChange}/>
         <Footer footer={footer} onChange={this.handleFooterChange}/>
+        <button onClick={this.handleExport}>Save</button>
       </main>
     );
   }
 }
+
 
 function Meme({ header, footer, url }) {
   return (
@@ -75,8 +83,6 @@ function Header({ header, onChange }) {
     </p>
   );
 }
-
-
 
 function Footer({ footer, onChange }) {
   return (
