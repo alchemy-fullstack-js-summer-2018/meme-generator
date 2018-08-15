@@ -1,4 +1,8 @@
 :local(.app) {
+  main {
+    display: flex;
+    justify-content: center;
+  }
 
   h1 {
     color: red;
@@ -6,5 +10,32 @@
 
   p {
     color: blue;
+  }
+
+  h3 {
+    font-size: 4em;
+    font-family: Impact;
+    color: white;
+    -webkit-text-stroke: 3px black;
+    margin: 0px;
+    text-transform: uppercase;
+  }
+
+  #meme {
+    margin: 50px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-size: auto 500px;
+  }
+
+  #header {
+    // align-self: flex-start;
+  }
+
+  #footer {
+    // align-self: flex-end;
   }
 }
