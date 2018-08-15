@@ -15,8 +15,9 @@ module.exports = {
     publicPath: ''
   },
 
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './docs',
+    contentBase: `./${buildDir}`,
 },
 
 
@@ -53,36 +54,7 @@ module.exports = {
       },
     
 
-      // css
-    //   {
-    //     test: /\.css$/,
-    //     use: [
-    //       {
-    //         loader: 'style-loader',
-    //         options: { sourceMap: true }
-    //       },
-    //       {
-    //         loader: 'css-loader',
-    //         options: { 
-    //           sourceMap: true,
-    //           importLoaders: 1 
-    //         }
-    //       },
-    //       {
-    //         loader: 'postcss-loader',
-    //         options: { sourceMap: true }
-    //       }
-    //     ]
-    //   },
-
-    //   // images
-    //   {
-    //     test: /\.(jpg|png|svg)$/,
-    //     use: {
-    //       loader: 'url-loader',
-    //       options: { limit: 1000 },
-    //     },
-    //   }
+      
     ]
   }
       
