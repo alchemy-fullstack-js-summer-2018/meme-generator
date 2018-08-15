@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import styles from './App.css';
 
 class App extends Component {
+  state = {
+    url: ''
+  };
+
   render() {
     return (
       <main className={styles.app}>
