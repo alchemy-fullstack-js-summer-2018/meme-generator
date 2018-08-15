@@ -9,23 +9,26 @@ const path = resolve(__dirname, buildDir);
 module.exports = {
 
   entry: './src/index.js',
+ 
   output: {
     path,
     filename: 'bundle.[hash].js',
     publicPath: ''
   },
+
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './docs',
+    contentBase: `./${buildDir}`,
   },
   plugins: [
+ 
     new CleanPlugin(`${path}/bundle.*.js`),
     new HtmlPlugin({ template: './src/index.html' })
   ],
   module: {
     rules: [
-      // js
+
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -36,7 +39,6 @@ module.exports = {
               ['env', {
                 targets: {
                   browsers: 'Chrome 65'
-                  // browsers: ['last 2 versions', 'safari >= 7']
                 },
               }],
               'react'
@@ -50,4 +52,34 @@ module.exports = {
         }
       },
 
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader',
+            options: { 
+              sourceMap: true,
+              importLoaders: 1 
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true }
+          }
+        ]
+      },
+
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { limit: 1000 },
+        },
+      }
+    ]
+  }
 };
