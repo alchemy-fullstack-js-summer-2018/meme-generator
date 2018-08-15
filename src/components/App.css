@@ -2,4 +2,31 @@
   h1 {
     color: red;
   }
+
+  div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: Impact, sans-serif;
+    color: white;
+    -webkit-text-stroke: 1.5px black;
+  }
+
+  #top {
+    align-items: flex-start;
+    margin-bottom: auto;
+  }
+
+  #bottom {
+    align-items: flex-end;
+  }
+
+  input {
+    margin-left: 5px;
+  }
 }

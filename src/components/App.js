@@ -3,12 +3,17 @@ import styles from './App.css';
 
 class App extends Component {
   state = {
-    content: 'What a great beach',
+    topContent: 'What a great beach',
+    bottomContent: 'Cool story bro',
     url: 'http://static.asiawebdirect.com/m/phuket/portals/kosamui-com/homepage/beaches/pagePropertiesImage/samui-beaches.jpg'
   };
 
-  handleContentChange = (content = '') => {
-    this.setState({ content });
+  handleTopContentChange = (topContent = '') => {
+    this.setState({ topContent });
+  };
+
+  handleBottomContentChange = (bottomContent = '') => {
+    this.setState({ bottomContent });
   };
 
   handleBackgroundChoose = (url = '') => {
@@ -16,31 +21,31 @@ class App extends Component {
   };
 
   render() {
-    const { url, content } = this.state;
+    const { url, topContent, bottomContent } = this.state;
 
     return (
       <main className={styles.app}>
         <section>
           <h1>Meme Generator</h1>
-          <Content content={content} onChange={this.handleContentChange}/>
+          <MemeText label='Top' content={topContent} onChange={this.handleContentChange}/>
+          <MemeText label='Bottom' content={bottomContent} onChange={this.handleContentChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
-          <p>More text here</p>
         </section>
 
         <section className='dank-meme'>
           <h2>Here Be Your Dank Meme</h2>
-          <AddText content={content} url={url}/>
+          <AddText topContent={topContent} bottomContent={bottomContent} url={url}/>
         </section>
       </main>
     );
   }
 }
 
-function Content({ content, onChange }) {
+function MemeText({ content, onChange, label }) {
   return (
     <p>
       <label>
-        Content:
+        {label} Text:
         <input
           value={content}
           onChange={({ target }) => onChange(target.value)}
@@ -50,10 +55,13 @@ function Content({ content, onChange }) {
   );
 }
 
-function AddText({ url, content }) {
+function AddText({ url, topContent, bottomContent }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url})` }}>{content}</div>
+      <div style={{ background: `url(${url})` }}>
+        <h3 id='top'>{topContent}</h3>
+        <h3 id='bottom'>{bottomContent}</h3>
+      </div>
     </Fragment>
   );
 }
@@ -61,7 +69,7 @@ function AddText({ url, content }) {
 function Background({ url, onChoose }) {
   return (
     <label>
-      Background:
+      Background image (max 300px):
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
     </label>
   );
