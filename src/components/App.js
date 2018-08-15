@@ -43,9 +43,11 @@ function MemeSay({ content, url }) {
   
   return (
     <Fragment>
-      <h2>Meme Header</h2>
-      <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
-      <h3>Meme Footer</h3>
+      <div className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
+        <h2 id="meme-header">Meme Header</h2>
+          
+        <h3 id="meme-footer">Meme Footer</h3>
+      </div>
     </Fragment>
   );
 }
