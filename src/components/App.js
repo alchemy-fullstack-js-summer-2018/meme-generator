@@ -51,7 +51,7 @@ class App extends Component {
 function Meme({ topText, url }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat` }}>{topText}</div>
+      <div style={{ background: `url(${url}) no-repeat left / auto 500px` }}>{topText}</div>
     </Fragment>
   ); 
 }
