@@ -11,10 +11,12 @@ Requires Node v10 or later.
 * Download all the files with `npm i`,
 * To test, run `npm test`. 
 
-### How to use API
+### How to use features
 * Connect to server with `npm start`.
 
 More to come...
+Bug/Known issue: cors is not in effect
+local images will save better than links 
 
 ## Contributor
 [Mariah Adams](https://github.com/MariahAdams)

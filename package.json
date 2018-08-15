@@ -1,7 +1,7 @@
 {
   "name": "meme-generator",
   "version": "1.0.0",
-  "description": "## Project Description Stay tuned!",
+  "description": "meme generator",
   "main": "index.js",
   "directories": {
     "doc": "docs"

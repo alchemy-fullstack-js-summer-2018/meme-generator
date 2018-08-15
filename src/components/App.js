@@ -1,8 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 import styles from './App.css';
 class App extends Component {
+
+  // TODO:
+  // dynamic font color and sizing
 
   state = {
     memeHeader: 'Meme Header',
@@ -43,11 +46,11 @@ class App extends Component {
           <h2>Awesome Meme Generator</h2>
           <label>Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/></label>
           <label>Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/></label>
-          <label>Add image (400px):<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
+          <label>Add image (400px) url:<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
         </section>
 
         <section className="meme-say">
-          <h2>Behold Your Meme</h2>
+          <h2>*~Behold Your Meme~*</h2>
           <div>
             <MemeSay memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
           </div>
@@ -63,13 +66,11 @@ class App extends Component {
 function MemeSay({ url, memeHeader, memeFooter }) {
   
   return (
-    <Fragment>
-      <div id="meme" className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
-        <h2 id="meme-header">{memeHeader}</h2>
-          
-        <h3 id="meme-footer">{memeFooter}</h3>
-      </div>
-    </Fragment>
+    //TODO: look into setting no-repeat in css file
+    <div id="meme" className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
+      <h2 id="meme-header">{memeHeader}</h2>
+      <h3 id="meme-footer">{memeFooter}</h3>
+    </div>
   );
 }
 
