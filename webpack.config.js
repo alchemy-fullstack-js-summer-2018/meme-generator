@@ -17,6 +17,7 @@ module.exports = {
   },
   // mode (will eventually be cmd line arg in package.json scripts)
   mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: './docs',
   },
