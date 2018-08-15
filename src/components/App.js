@@ -58,7 +58,7 @@ function MemeText({ content, onChange, label }) {
 function AddText({ url, topContent, bottomContent }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url})` }}>
+      <div style={{ background: `url(${url}) no-repeat center`, backgroundSize: 'auto 500px' }}>
         <h3 id='top'>{topContent}</h3>
         <h3 id='bottom'>{bottomContent}</h3>
       </div>
@@ -69,7 +69,7 @@ function AddText({ url, topContent, bottomContent }) {
 function Background({ url, onChoose }) {
   return (
     <label>
-      Background image (max 300px):
+      Background image:
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
     </label>
   );
