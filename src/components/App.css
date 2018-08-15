@@ -1,0 +1,11 @@
+:local(.app) {
+
+  h2 {
+    margin: 20;
+    display: inline-block;
+    padding: 20px;
+    font-size: 48px;
+    background: steelblue;
+  }
+
+}
