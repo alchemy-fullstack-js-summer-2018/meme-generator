@@ -6,9 +6,9 @@ import fileSaver from 'file-saver';
 class App extends Component {
 
   state = {
-    memeHeader: 'Header',
-    memeFooter: 'Footer',
-    url: 'Background'
+    memeHeader: 'I can\'t.',
+    memeFooter: 'You can.',
+    url: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjhkZGRhYzgtYWU1Ni00OTA0LTkyZGEtZDY3MTE4ZWQxNGY4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX477_CR0,0,477,268_AL_.jpg'
   };
 
   handleHeaderChange = (memeHeader = '') => {
@@ -24,9 +24,10 @@ class App extends Component {
   };
 
   handleExport = () => {
-    dom2image.toBlob(this.image)
+    const meme = document.getElementById('background');
+    dom2image.toBlob(meme)
       .then(blob => {
-        fileSaver.saveAs(blob)
+        fileSaver.saveAs(blob, 'saved-meme.png');
       });
   };
 
@@ -35,15 +36,18 @@ class App extends Component {
 
     return  (
       <main className={styles.app}>
-        <section>
-          <h1>Meme Generator!</h1>
+        <section id="inputs">
+          <h1>Meme Generator</h1>
           <MemeHeader memeHeader={memeHeader} onChange={this.handleHeaderChange}/>
           <MemeFooter memeFooter={memeFooter} onChange={this.handleFooterChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
         <br/>
-        <section>
+        <section id="meme">
           <MemeGenerator memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
+          <p>
+            <button onClick={this.handleExport}>Save Meme</button>
+          </p>
         </section>
 
       </main>
@@ -57,6 +61,7 @@ function MemeHeader({ memeHeader, onChange }) {
     <p>
       <label>
         Meme Header:
+        <br/>
         <input
           value={memeHeader}
           onChange={({ target }) => onChange(target.value)}
@@ -71,6 +76,7 @@ function MemeFooter({ memeFooter, onChange }) {
     <p>
       <label>
         Meme Footer:
+        <br/>
         <input
           value={memeFooter}
           onChange={({ target }) => onChange(target.value)}
@@ -84,7 +90,9 @@ function Background({ url, onChoose }) {
   return (
     <label>
       Background:
+      <br/>
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+      <br/>
       <input type="file" onChange={({ target }) => {
         const reader = new FileReader();
         reader.readAsDataURL(target.files[0]);
@@ -98,7 +106,11 @@ function MemeGenerator({ memeHeader, memeFooter, url }) {
 
   return (
     <Fragment>
-      <section id="background" style={{ background: `url(${url}) no-repeat` }}>{memeHeader}<br/>{memeFooter}</section>
+      <section id="background" style={{ background: `url(${url}) center/100% 100% no-repeat ` }}>
+        <h2>{memeHeader}</h2>
+        <br/>
+        <h2>{memeFooter}</h2>
+      </section>
     </Fragment>
   );
 }
