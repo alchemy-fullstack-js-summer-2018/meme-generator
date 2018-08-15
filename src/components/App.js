@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
+import '../styles/main.css';
 class App extends Component {
 
   render() {
 
     return (
       <main>
-        <p>
+        <h1>
           Hello React!!!
-        </p>
+        </h1>
       </main>
     );
   }
