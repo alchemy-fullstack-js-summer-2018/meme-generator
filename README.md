@@ -13,7 +13,7 @@ Requires Node v10 or later.
 
 ### How to use API
 * Connect to server with `npm run start`.
-* Enter `http://localhost:3000` in your browser.
+* Enter `http://localhost:8080` in your browser.
 
 More to come...
 
