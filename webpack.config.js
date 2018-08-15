@@ -38,9 +38,36 @@ module.exports = {
                 },
               }],
               'react'
-            ]
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'),
+              require('babel-plugin-transform-class-properties'),
+            ],
+            cacheDirectory: true
           }
         }
+      },
+      
+      // css loader
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true }
+          }
+        ]
       }
     ]
   }
