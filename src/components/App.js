@@ -5,16 +5,9 @@ import styles from './App.css';
 class App extends Component {
 
   state = {
-    content: 'Let\'s meme!',
     memeHeader: 'Meme Header',
     memeFooter: 'Meme Footer',
     url: 'https://i.pinimg.com/736x/01/09/ca/0109cab1811844ab02c614a1281e520c--baby-koala-koala-bears.jpg'
-  };
-
-  handleContentChange = ({ target }) => {
-    this.setState({
-      content: target.value
-    });
   };
 
   handleHeaderChange = ({ target }) => {
@@ -42,13 +35,12 @@ class App extends Component {
   };
 
   render() {
-    const { content, memeHeader, memeFooter, url } = this.state;
+    const { memeHeader, memeFooter, url } = this.state;
 
     return (
       <main className={styles.app}>
         <section className="input-container">
-          <h2>Content you are looking for</h2>
-          <input value={content} onChange={this.handleContentChange}/>
+          <h2>Awesome Meme Generator</h2>
           <label>Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/></label>
           <label>Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/></label>
           <label>Add image (400px):<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
@@ -57,7 +49,7 @@ class App extends Component {
         <section className="meme-say">
           <h2>Behold Your Meme</h2>
           <div>
-            <MemeSay content={content} memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
+            <MemeSay memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
           </div>
           <p>
             <button onClick={this.handleExport}>Save Meme!</button>
