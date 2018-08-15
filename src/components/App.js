@@ -6,9 +6,9 @@ import styles from './App.css';
 class App extends Component {
 
     state = {
-        topcontent: '¿Cuál es el precio de la tortilla?',
-        bottomcontent: ' No soy la señora de la casa',
-        url: 'https://cms.qz.com/wp-content/uploads/2017/01/mexican-president-enrique-pena-nieto-e1485451572857.jpg?quality=75&strip=all&w=1600'
+        topcontent: 'How I look like',
+        bottomcontent: 'When I am late for work',
+        url: 'https://i.ytimg.com/vi/VeuoKqb2ihQ/maxresdefault.jpg'
     };
  
     handleTopContentChange = (topcontent = ' ') => {
@@ -37,8 +37,8 @@ class App extends Component {
             <main className={styles.app}>
                 <section>
                 <h2>Set Options</h2>
-                <TopContent topcontent={topcontent} onChange={this.handleContentChange}/>
-                <BottomContent bottomcontent={bottomcontent} onChange={this.handleContentChange}/>
+                <TopContent topcontent={topcontent} onChange={this.handleTopContentChange}/>
+                <BottomContent bottomcontent={bottomcontent} onChange={this.handleBottomContentChange}/>
                 <Background url={url} onChoose={this.handleBackgroundChoose}/>
                 </section>
 
