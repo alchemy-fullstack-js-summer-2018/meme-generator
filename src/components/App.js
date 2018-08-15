@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styles from './App.css';
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 
 class App extends Component {
 
@@ -21,6 +23,13 @@ class App extends Component {
     this.setState({ url });
   };
 
+  handleExport = () => {
+    dom2image.toBlob(this.image)
+      .then(blob => {
+        fileSaver.saveAs(blob)
+      });
+  };
+
   render() {
     const { memeHeader, memeFooter, url } = this.state;
 
@@ -31,13 +40,9 @@ class App extends Component {
           <MemeHeader memeHeader={memeHeader} onChange={this.handleHeaderChange}/>
           <MemeFooter memeFooter={memeFooter} onChange={this.handleFooterChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
-          <p>{memeHeader}</p>
-          <p>{memeFooter}</p>
-          <p>{url}</p>
         </section>
-
+        <br/>
         <section>
-          <h2>Your meme!</h2>
           <MemeGenerator memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
         </section>
 
@@ -80,6 +85,11 @@ function Background({ url, onChoose }) {
     <label>
       Background:
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+      <input type="file" onChange={({ target }) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = () => onChoose(reader.result);
+      }}/>
     </label>
   );
 }
@@ -88,7 +98,7 @@ function MemeGenerator({ memeHeader, memeFooter, url }) {
 
   return (
     <Fragment>
-      <pre style={{ background: `url(${url})` }}>{memeHeader}<br/>{memeFooter}</pre>
+      <section id="background" style={{ background: `url(${url}) no-repeat` }}>{memeHeader}<br/>{memeFooter}</section>
     </Fragment>
   );
 }
