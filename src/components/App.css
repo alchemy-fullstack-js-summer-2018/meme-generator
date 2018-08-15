@@ -5,10 +5,17 @@
     height: 400px;
   }
 
-  #meme-container {
+  .meme-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
 
+  #meme-header {
+    align-self: flex-start;
+  }
 
+  #meme-footer {
+    align-self: flex-end;
+  }
 }

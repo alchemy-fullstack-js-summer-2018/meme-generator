@@ -4,6 +4,8 @@ class App extends Component {
 
   state = {
     content: 'Let\'s meme!',
+    memeHeader: 'Meme Header',
+    memeFooter: 'Meme Footer',
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIPS9VeFtecRovTEZmWFWl6RtmscJLkz7a6carZ9-IqY0ZOGPJwA'
   }
 
@@ -13,25 +15,39 @@ class App extends Component {
     });
   };
 
+  handleHeaderChange = ({ target }) => {
+    this.setState({
+      memeHeader: target.value
+    });
+  };
+
+  handleFooterChange = ({ target }) => {
+    this.setState({
+      memeFooter: target.value
+    });
+  };
+
   handleBackgroundChoose = (url = '') => {
     this.setState({ url })
   };
 
   render() {
-    const { content, url } = this.state;
+    const { content, memeHeader, memeFooter, url } = this.state;
 
     return (
       <main className={styles.app}>
         <section>
           <h2>Content you are looking for</h2>
           <input value={content} onChange={this.handleContentChange}/>
+          Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/>
+          Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
 
         <section className="meme-say">
           <h2>Behold Your Meme</h2>
           <div>
-            <MemeSay content={content} url={url}/>
+            <MemeSay content={content} memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
           </div>
         </section>
       </main>
@@ -39,14 +55,14 @@ class App extends Component {
   }
 }
 
-function MemeSay({ content, url }) {
+function MemeSay({ url, memeHeader, memeFooter }) {
   
   return (
     <Fragment>
       <div className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
-        <h2 id="meme-header">Meme Header</h2>
+        <h2 id="meme-header">{memeHeader}</h2>
           
-        <h3 id="meme-footer">Meme Footer</h3>
+        <h3 id="meme-footer">{memeFooter}</h3>
       </div>
     </Fragment>
   );
