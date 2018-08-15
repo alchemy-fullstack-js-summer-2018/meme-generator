@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import styles from './App.css'
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 
 class App extends Component {
 
   state = {
     topText: 'Your text here!',
-    url: 'https://i.kym-cdn.com/entries/icons/mobile/000/000/745/success.jpg'
+    url: 'https://images.theconversation.com/files/38926/original/5cwx89t4-1389586191.jpg'
   };
 
   handleTopTextChange = (topText = ' ') => {
@@ -14,6 +16,13 @@ class App extends Component {
 
   handleBackgroundChoose = (url = '') => {
     this.setState({ url });
+  };
+
+  handleExport = () => {
+    dom2image.toBlob(this.image)
+      .then(blob => {
+        fileSaver.saveAs(blob, 'my-meme.png');
+      });
   };
 
   render() {
@@ -30,6 +39,9 @@ class App extends Component {
           <span ref={node => this.image = node}>
             <Meme topText={topText} url={url}/>
           </span>
+          <p>
+            <button onClick={this.handleExport}>Save meme</button>
+          </p>
         </section>
       </main>
     );
@@ -39,7 +51,7 @@ class App extends Component {
 function Meme({ topText, url }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url})` }}>{topText}</div>
+      <div style={{ background: `url(${url}) no-repeat` }}>{topText}</div>
     </Fragment>
   ); 
 }
