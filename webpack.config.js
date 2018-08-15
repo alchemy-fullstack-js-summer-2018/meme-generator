@@ -1,6 +1,6 @@
 /* eslint-env node */
 const { resolve } = require('path');
-// const CleanPlugin = require('clean-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 // const HtmlPlugin = require('html-webpack-plugin');
 
 const buildDir = 'docs';
@@ -14,6 +14,13 @@ module.exports = {
     filename: 'bundle.[hash].js',
     publicPath: ''
   },
-  mode: 'development'
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: `./${buildDir}`,
+  },
+  plugins: [
+    new CleanPlugin(`${path}/bundle.*.js`)
+  ]
 
 };
