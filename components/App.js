@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 // import dom2image from 'dom-to-image';
 // import fileSaver from 'file-saver';
-import styles from '../styles/main.css';
+import styles from './App.css';
 
 class App extends Component {
 
@@ -26,7 +26,7 @@ class App extends Component {
     const { content, url } = this.state;
 
     return (
-      <main>
+      <main className={styles.app}>
         <Fragment>
           <h1>Meme Generator</h1>
           <input value={content} onChange={this.handleContentChange}/>
@@ -35,7 +35,7 @@ class App extends Component {
 
         <Fragment>
           <h2>Your Meme:</h2>
-          <div>
+          <div className="meme">
             <YourMeme content={content} url={url}/>
           </div>
         </Fragment>
