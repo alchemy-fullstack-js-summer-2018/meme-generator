@@ -66,7 +66,16 @@ module.exports = {
             options: { sourceMap: true }
           }
         ]
+      },
+
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { limit: 1000 }
+        }
       }
+
     ]
   }
 };

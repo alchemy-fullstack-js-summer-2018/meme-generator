@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 import styles from './App.css';
 class App extends Component {
 
