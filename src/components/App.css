@@ -1,0 +1,29 @@
+:local(.app) {
+
+  div {
+    width: 400px;
+    height: 400px;
+  }
+
+  label {
+    margin: 6px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .meme-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px #000000;
+  }
+
+}
