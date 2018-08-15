@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import '../styles/main.css';
+import styles from './App.css';
 class App extends Component {
 
   state = {
-    content: 'Hello State!',
+    content: 'Let\'s meme!',
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIPS9VeFtecRovTEZmWFWl6RtmscJLkz7a6carZ9-IqY0ZOGPJwA'
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
     const { content, url } = this.state;
 
     return (
-      <main>
+      <main className={styles.app}>
         <section>
           <h2>Content you are looking for</h2>
           <input value={content} onChange={this.handleContentChange}/>
@@ -43,7 +43,9 @@ function MemeSay({ content, url }) {
   
   return (
     <Fragment>
+      <h2>Meme Header</h2>
       <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
+      <h3>Meme Footer</h3>
     </Fragment>
   );
 }
