@@ -3,26 +3,44 @@ import styles from './App.css';
 
 class App extends Component {
   state = {
-    content: 'test'
+    header: 'Header Here'
   };
 
-  handleChange = ({ target }) => {
-    this.setState({
-      content: target.value
-    });
+  handleHeaderChange = (header = '') => {
+    this.setState({ header });
   };
 
   render() {
-    const { content } = this.state;
+    const { header } = this.state;
 
     return (
       <main className={styles.app}>
         <h1>Meme Generator</h1>
-        <p>{content}</p>
-        <input value={content} onChange={this.handleChange}/>
+        <Meme header={header}/>
+        <Header header={header} onChange={this.handleHeaderChange}/>
       </main>
     );
   }
+}
+
+function Meme({ header }) {
+  return (
+    <p>{header}</p>
+  );
+}
+
+function Header({ header, onChange }) {
+  return (
+    <p>
+      <label>
+        Header:
+        <input
+          value={header}
+          onChange={({ target }) => onChange(target.value)}
+        />
+      </label>
+    </p>
+ );
 }
 
 export default App;
