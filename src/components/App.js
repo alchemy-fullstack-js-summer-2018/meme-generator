@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../styles/main.css';
 class App extends Component {
 
@@ -18,23 +18,47 @@ class App extends Component {
   };
 
   render() {
-    const { content, url, onChoose } = this.state;
+    const { content, url } = this.state;
 
     return (
       <main>
         <section>
           <h2>Content you are looking for</h2>
           <input value={content} onChange={this.handleContentChange}/>
-          <input value={url} onChange={this.handleBackgroundChoose}/>
+          <Background url={url} onChoose={this.handleBackgroundChoose}/>
+        </section>
+
+        <section className="meme-say">
+          <h2>Behold Your Meme</h2>
+          <div>
+            <MemeSay content={content} url={url}/>
+          </div>
+        </section>
+      </main>
+    );
+  }
+}
+
+function MemeSay({ content, url }) {
+  
+  return (
+    <Fragment>
+      <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
+    </Fragment>
+  );
+}
+
+function Background({ url, onChoose }) {
+  return (
+    <label>
+      <input value={url} onChange={({ target }) => onChoose(target.value)}/>
           <input type="file" onChange={({ target }) => {
             const reader = new FileReader();
             reader.readAsDataURL(target.files[0]);
             reader.onload = () => onChoose(reader.result);
           }}/>
-        </section>
-      </main>
-    );
-  }
+    </label>
+  );
 }
 
 export default App;

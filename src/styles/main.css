@@ -3,3 +3,8 @@ body {
   color: blue;
   border: 10px solid gray;
 }
+
+div {
+  width: 400px;
+  height: 400px;
+}
