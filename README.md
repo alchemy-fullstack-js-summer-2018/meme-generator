@@ -12,8 +12,7 @@ Requires Node v10 or later.
 * To test, run `npm test`. 
 
 ### How to use API
-* Connect to server with `npm run start`.
-* Enter `http://localhost:8080` in your browser.
+* Connect to server with `npm start`.
 
 More to come...
 
