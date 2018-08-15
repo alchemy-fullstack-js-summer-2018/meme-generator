@@ -1,0 +1,36 @@
+:local(.app) {
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    color: red;
+  }
+
+  p {
+    color: blue;
+  }
+
+  h3 {
+    font-size: 3.3em;
+    word-wrap: normal;
+    text-align: center;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    margin: 25px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: black 1px 0 10px;
+  }
+
+  #meme {
+    font-family: Impact;
+    height: 500px;
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
