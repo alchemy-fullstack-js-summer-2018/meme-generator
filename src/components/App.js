@@ -106,7 +106,7 @@ function MemeGenerator({ memeHeader, memeFooter, url }) {
 
   return (
     <Fragment>
-      <section id="background" style={{ background: `url(${url}) center/100% 100% no-repeat ` }}>
+      <section id="background" style={{ background: `url(${url}) center/auto 100% no-repeat ` }}>
         <h2>{memeHeader}</h2>
         <br/>
         <h2>{memeFooter}</h2>
