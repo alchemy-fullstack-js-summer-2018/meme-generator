@@ -5,7 +5,7 @@ import styles from './App.css';
 class App extends Component {
 
   state ={
-    content: 'I luv REAL Food!',
+   content: 'I luv REAL Food!',
     url: 'http://www.diycraftsguru.com/wp-content/uploads/2017/03/ultimate-real-food-eating-guide-and-recipes.jpg'
   };
 
@@ -27,7 +27,7 @@ render() {
 
       <section>
         <Meme content={content} url={url}/>
-        </section>
+      </section>
 
     </main>
   );
@@ -38,7 +38,7 @@ function Meme  ({ content, url }) {
   return (
     <Fragment>
       <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
-      </Fragment> 
+    </Fragment> 
   )
 }
 

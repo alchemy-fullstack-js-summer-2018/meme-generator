@@ -4,5 +4,7 @@
     height: 500px;
   }
 
-
+  body {
+    background-color: greenyellow;
+  }
 }
