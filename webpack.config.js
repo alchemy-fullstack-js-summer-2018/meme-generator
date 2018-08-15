@@ -23,5 +23,31 @@ module.exports = {
     new CleanPlugin(`${path}/bundle.*.js`),
     new HtmlPlugin({ template: './src/index.html' })
   ],
+  module: {
+    rules: [
+      // js
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: 'Chrome 65'
+                  // browsers: ['last 2 versions', 'safari >= 7']
+                },
+              }],
+              'react'
+            ],
+            plugins: [
+              require('babel-plugin-transform-object-rest-spread'),
+              require('babel-plugin-transform-class-properties'),
+            ],
+            cacheDirectory: true
+          }
+        }
+      },
 
 };
