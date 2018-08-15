@@ -25,9 +25,21 @@ render() {
         <Content content={content} onChange={this.handleContentChange}/>
       </section>
 
+      <section>
+        <Meme url={url}/>
+        </section>
+
     </main>
   );
 }
+}
+
+function Meme  ({ content, url }) {
+  return (
+    <Fragment>
+      <div style={{ background: `url(${url}) no-repeat` }}></div>
+      </Fragment> 
+  )
 }
 
 function Content({ content, onChange }) {
