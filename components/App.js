@@ -6,8 +6,7 @@ import styles from './App.css';
 class App extends Component {
 
   state = {
-    content: 'Meme Generator',
-    memes: [],
+    content: 'Hilarious',
     meme: 'default',
     url: 'https://i.imgur.com/hGkOZ.jpg' 
   };
@@ -35,9 +34,9 @@ class App extends Component {
 
         <Fragment>
           <h2>Your Meme:</h2>
-          <div className="meme">
-            <YourMeme content={content} url={url}/>
-          </div>
+          
+          <YourMeme content={content} url={url}/>
+    
         </Fragment>
       </main>
     );
@@ -48,10 +47,8 @@ class App extends Component {
 
 function YourMeme({ content, url }) {
   return (
-    <Fragment>
-      <div style={{ background: `url(${url})` }}>{content}
-      </div>
-    </Fragment>
+    <pre style={{ background: `url(${url})` }}>{content}</pre>
+    
   );
 }
 
