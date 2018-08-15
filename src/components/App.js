@@ -1,11 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import styles from './App.css';
+// import fileSaver from 'file-saver';
 
 class App extends Component {
   state = {
-    topContent: 'What a great beach',
-    bottomContent: 'Cool story bro',
-    url: 'http://static.asiawebdirect.com/m/phuket/portals/kosamui-com/homepage/beaches/pagePropertiesImage/samui-beaches.jpg'
+    topContent: 'hello',
+    bottomContent: 'there',
+    url: 'http://i.ytimg.com/vi/5_j_ilXDFxY/maxresdefault.jpg'
   };
 
   handleTopContentChange = (topContent = '') => {
@@ -27,8 +28,8 @@ class App extends Component {
       <main className={styles.app}>
         <section>
           <h1>Meme Generator</h1>
-          <MemeText label='Top' content={topContent} onChange={this.handleContentChange}/>
-          <MemeText label='Bottom' content={bottomContent} onChange={this.handleContentChange}/>
+          <MemeText label='Top' content={topContent} onChange={this.handleTopContentChange}/>
+          <MemeText label='Bottom' content={bottomContent} onChange={this.handleBottomContentChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
 
@@ -58,7 +59,7 @@ function MemeText({ content, onChange, label }) {
 function AddText({ url, topContent, bottomContent }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat center`, backgroundSize: 'auto 500px' }}>
+      <div style={{ background: `url(${url}) no-repeat center / auto 500px` }}>
         <h3 id='top'>{topContent}</h3>
         <h3 id='bottom'>{bottomContent}</h3>
       </div>
@@ -71,6 +72,11 @@ function Background({ url, onChoose }) {
     <label>
       Background image:
       <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+      <input type="file" onChange={({ target }) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = () => onChoose(reader.result);
+      }}/>
     </label>
   );
 }
