@@ -22,8 +22,8 @@ module.exports = {
     contentBase: './docs',
   },
   plugins: [
-  new CleanWebpackPlugin(`${path}/bundle.*.js`), 
-  new HtmlPlugin({ template: './src/index.html' })
+    new CleanWebpackPlugin(`${path}/bundle.*.js`), 
+    new HtmlPlugin({ template: './src/index.html' })
   ],
   module: {
     rules: [

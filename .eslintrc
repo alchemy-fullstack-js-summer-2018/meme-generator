@@ -22,6 +22,9 @@
     "plugin:react/recommended"
   ],
   "rules": {
+      "babel/object-curly-spacing": ["error", "always"],
+      "babel/no-invalid-this": 1,
+      "babel/semi": 1,
       "no-console": "warn",
       "indent": ["error", 2, { "SwitchCase": 1 }],
       "quotes": ["error", "single"],
