@@ -14,6 +14,7 @@ module.exports = {
     publicPath: ''
   },
   mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: `./${buildDir}`
   },
@@ -35,6 +36,7 @@ module.exports = {
                   browsers: ['last 2 versions', 'chrome >= 65']
                 },
               }],
+              'react'
             ],
             plugins: [
               require('babel-plugin-transform-object-rest-spread'),
