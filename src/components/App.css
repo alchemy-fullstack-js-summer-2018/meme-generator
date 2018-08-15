@@ -1,0 +1,12 @@
+:local(.app) {
+
+    pre {
+      width: 1000px;
+      height: 1000px;
+      padding: 30px;
+      font-size: 40px;
+      color: white;
+      text-shadow: 3px 2px 3px black;
+    }
+  
+  }
