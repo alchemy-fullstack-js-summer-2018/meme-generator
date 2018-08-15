@@ -14,7 +14,7 @@ module.exports = {
     filename: 'bundle.[hash].js',
     publicPath: ''
   },
-
+  mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: `./${buildDir}`,
