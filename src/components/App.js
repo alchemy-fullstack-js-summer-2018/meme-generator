@@ -1,12 +1,13 @@
 import React, { Fragment, Component } from 'react';
 import styles from './App.css';
-// import fileSaver from 'file-saver';
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 
 class App extends Component {
   state = {
-    topContent: 'hello',
-    bottomContent: 'there',
-    url: 'http://i.ytimg.com/vi/5_j_ilXDFxY/maxresdefault.jpg'
+    topContent: 'this is where',
+    bottomContent: 'the fun begins',
+    url: 'http://i.imgflip.com/1be86b.jpg'
   };
 
   handleTopContentChange = (topContent = '') => {
@@ -19,6 +20,13 @@ class App extends Component {
 
   handleBackgroundChoose = (url = '') => {
     this.setState({ url });
+  };
+
+  handleExport = () => {
+    dom2image.toBlob(this.image)
+      .then(blob => {
+        fileSaver.saveAs(blob, 'dank-meme.png');
+      });
   };
 
   render() {
@@ -35,7 +43,12 @@ class App extends Component {
 
         <section className='dank-meme'>
           <h2>Here Be Your Dank Meme</h2>
-          <AddText topContent={topContent} bottomContent={bottomContent} url={url}/>
+          <section ref={node => this.image = node}>
+            <AddText topContent={topContent} bottomContent={bottomContent} url={url}/>
+          </section>
+          <p>
+            <button onClick={this.handleExport}>Save meme</button>
+          </p>
         </section>
       </main>
     );
