@@ -33,6 +33,14 @@ class App extends Component {
     this.setState({ url })
   };
 
+  handleExport = () => {
+    const meme = document.getElementById('meme')
+    dom2image.toBlob(meme)
+      .then(blob => {
+        fileSaver.saveAs(blob, 'awesome-meme.png')
+      });
+  };
+
   render() {
     const { content, memeHeader, memeFooter, url } = this.state;
 
@@ -51,6 +59,9 @@ class App extends Component {
           <div>
             <MemeSay content={content} memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
           </div>
+          <p>
+            <button onClick={this.handleExport}>Save Meme!</button>
+          </p>
         </section>
       </main>
     );
@@ -61,7 +72,7 @@ function MemeSay({ url, memeHeader, memeFooter }) {
   
   return (
     <Fragment>
-      <div className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
+      <div id="meme" className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
         <h2 id="meme-header">{memeHeader}</h2>
           
         <h3 id="meme-footer">{memeFooter}</h3>
