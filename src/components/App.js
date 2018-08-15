@@ -9,7 +9,7 @@ render() {
   return ( 
     <main >
       <section>
-        <h2>Hello! Carmen here!</h2>/>
+        <h2>Hello! Carmen here!</h2>
       </section>
 
       
