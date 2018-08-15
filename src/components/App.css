@@ -1,0 +1,27 @@
+:local(.app) {
+
+  #background {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 2.5em;
+    word-wrap: normal;
+    text-align: center;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 2px 2px 2px lightgrey;
+    height: 500px;
+  }
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    color: rgb(7, 7, 139);
+  }
+
+  h2 {
+    margin: 10px 0px 0px 10px;
+  }
+}
