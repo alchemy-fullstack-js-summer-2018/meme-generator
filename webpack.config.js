@@ -18,7 +18,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: `./${buildDir}`,
-},
+  },
 
 
   plugins: [
@@ -80,4 +80,4 @@ module.exports = {
     ]
   }
       
-}
+};
