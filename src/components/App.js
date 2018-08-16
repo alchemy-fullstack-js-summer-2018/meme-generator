@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styles from './App.css'
+import styles from './App.css';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 
