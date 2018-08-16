@@ -1,0 +1,29 @@
+:local(.app) {
+
+  h1 {
+    color: red;
+  }
+
+  p {
+    color: blue;
+  }
+
+  #toptext {
+    text-transform: uppercase;
+    margin-bottom: auto;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    -webkit-text-stroke: 1.5px black;
+  }
+  #bottomtext {
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    -webkit-text-stroke: 1.5px black;
+  }
+
+}
