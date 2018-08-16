@@ -1,0 +1,10 @@
+:local(.app) {
+
+  div {
+    height: 500px;
+  }
+
+  body {
+    background-color: greenyellow;
+  }
+}
