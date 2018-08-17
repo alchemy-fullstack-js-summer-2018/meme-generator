@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     memeHeader: 'Meme Header',
     memeFooter: 'Meme Footer',
+    color: '#FFFFFF',
     url: 'https://i.pinimg.com/736x/01/09/ca/0109cab1811844ab02c614a1281e520c--baby-koala-koala-bears.jpg'
   };
 
@@ -29,6 +30,10 @@ class App extends Component {
     this.setState({ url });
   };
 
+  handleColorChange = ({ target }) => {
+    this.setState({ color: target.value });
+  };
+
   handleExport = () => {
     const meme = document.getElementById('meme');
     dom2image.toBlob(meme)
@@ -38,7 +43,7 @@ class App extends Component {
   };
 
   render() {
-    const { memeHeader, memeFooter, url } = this.state;
+    const { memeHeader, memeFooter, url, color } = this.state;
 
     return (
       <main className={styles.app}>
@@ -46,13 +51,14 @@ class App extends Component {
           <h2>Awesome Meme Generator</h2>
           <label>Meme Header:<input value={memeHeader} onChange={this.handleHeaderChange}/></label>
           <label>Meme Footer:<input value={memeFooter} onChange={this.handleFooterChange}/></label>
+          <label>Choose Font Color:<input type="color" value={color} onChange={this.handleColorChange}/></label>
           <label>Add image (400px) url:<Background url={url} onChoose={this.handleBackgroundChoose}/></label>
         </section>
 
         <section className="meme-say">
           <h2>*~Behold Your Meme~*</h2>
           <div>
-            <MemeSay memeHeader={memeHeader} memeFooter={memeFooter} url={url}/>
+            <MemeSay memeHeader={memeHeader} memeFooter={memeFooter} url={url} color={color}/>
           </div>
           <p>
             <button onClick={this.handleExport}>Save Meme!</button>
@@ -63,13 +69,13 @@ class App extends Component {
   }
 }
 
-function MemeSay({ url, memeHeader, memeFooter }) {
-  
+function MemeSay({ url, memeHeader, memeFooter, color }) {
+  console.log('color', color);
   return (
     //TODO: look into setting no-repeat in css file
     <div id="meme" className="meme-container" style={{ background: `url(${url}) no-repeat` }}>
-      <h2 id="meme-header">{memeHeader}</h2>
-      <h3 id="meme-footer">{memeFooter}</h3>
+      <h2 id="meme-header" style={{ color }}>{memeHeader}</h2>
+      <h3 id="meme-footer" style={{ color }}>{memeFooter}</h3>
     </div>
   );
 }
