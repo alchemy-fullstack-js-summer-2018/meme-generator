@@ -15,6 +15,7 @@ Requires Node v10 or later.
 * Connect to server with `npm start`.
 * Customize your meme by:
     * Editing the header and footer inputs,
+    * Pick your font color and size,
     * Adding your own image via pasting a link in the text box or choosing a local file,
     - Known bug: local images will save better than certain links (CORS issue)
 * Click `Save Meme!`.
