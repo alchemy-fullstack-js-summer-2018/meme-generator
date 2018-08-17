@@ -15,12 +15,13 @@ Requires Node v10 or later.
 * Connect to server with `npm start`.
 * Customize your meme by:
     * Editing the header and footer inputs,
+    * Pick your font color and size,
     * Adding your own image via pasting a link in the text box or choosing a local file,
     - Known bug: local images will save better than certain links (CORS issue)
 * Click `Save Meme!`.
 
 ## Contributor
-[Mariah Adams](https://github.com/MariahAdams)
+This project was created by [Mariah Adams](https://github.com/MariahAdams) during the Summer 2018 Full-Stack Javascript Career Track program at [Alchemy Code Lab](https://www.alchemycodelab.com).
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
