@@ -7,11 +7,16 @@ class App extends Component {
 
   state = {
     topText: 'Your text here!',
+    bottomText: '...and here too.',
     url: 'https://images.theconversation.com/files/38926/original/5cwx89t4-1389586191.jpg'
   };
 
-  handleTopTextChange = (topText = ' ') => {
+  handleTopTextChange = (topText = '') => {
     this.setState({ topText });
+  };
+
+  handleBottomTextChange = (bottomText = '') => {
+    this.setState({ bottomText });
   };
 
   handleBackgroundChoose = (url = '') => {
@@ -19,25 +24,27 @@ class App extends Component {
   };
 
   handleExport = () => {
-    dom2image.toBlob(this.image)
+    const image = document.getElementById('image-meme');
+    dom2image.toBlob(image)
       .then(blob => {
         fileSaver.saveAs(blob, 'my-meme.png');
       });
   };
 
   render() {
-    const { topText, url } = this.state;
+    const { topText, bottomText, url } = this.state;
     return (
       <main className={styles.app}>
         <section>
           <h1>Meme it on me!</h1>
-          <TopText topText={topText} onChange={this.handleTopTextChange}/>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
+          <TopText topText={topText} onChange={this.handleTopTextChange}/>
+          <BottomText bottomText={bottomText} onChange={this.handleBottomTextChange}/>
         </section>
 
         <section className="meme">
           <span ref={node => this.image = node}>
-            <Meme topText={topText} url={url}/>
+            <Meme topText={topText} bottomText={bottomText} url={url}/>
           </span>
           <p>
             <button onClick={this.handleExport}>Save meme</button>
@@ -48,17 +55,22 @@ class App extends Component {
   }
 }
 
-function Meme({ topText, url }) {
+function Meme({ topText, bottomText, url }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat left / auto 500px` }}>{topText}</div>
+      <div id="image-meme" style={{ background: `url(${url}) no-repeat left / auto 550px` }}>
+        <div className="text-container">
+          <p className="headerText">{topText}</p>
+          <p className="footerText">{bottomText}</p>
+        </div>
+      </div>
     </Fragment>
   ); 
 }
 
 function TopText({ topText, onChange }) {
   return (
-    <h2>
+    <p>
       <label>
         Header text:
         <input
@@ -66,7 +78,21 @@ function TopText({ topText, onChange }) {
           onChange={({ target }) => onChange(target.value)}
         />
       </label>
-    </h2>
+    </p>
+  );
+}
+
+function BottomText({ bottomText, onChange }) {
+  return (
+    <p>
+      <label>
+        Footer text:
+        <input
+          value={bottomText}
+          onChange={({ target }) => onChange(target.value)}
+        />
+      </label>
+    </p>
   );
 }
 
