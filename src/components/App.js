@@ -6,13 +6,22 @@ class App extends Component {
 
   state ={
     content: 'I luv REAL Food!',
-    url: 'http://www.diycraftsguru.com/wp-content/uploads/2017/03/ultimate-real-food-eating-guide-and-recipes.jpg'
+    url: 'https://www.castlighthealth.com/wp-content/uploads/2018/03/HealthyFood.jpg'
+    // url: 'https://bloximages.newyork1.vip.townnews.com/wtxl.com/content/tncms/assets/v3/editorial/f/4c/f4cfe044-2124-11e8-ba4e-933042f59627/5a9e66614e64b.image.jpg?resize=1200%2C630'
+    // url: 'https://media.eterritoire.fr/?u=aHR0cDovL2N0LWR3LmF5YWxpbmUuY29tOjgwL2ZpY2hpZXJzL2ZpY2hlcy9waG90b3MvNTg5MDE4NjEtbGVzLWxlZ3VtZXMtZXQtbGVzLWZydWl0cy1zdXItZm9uZC1ydXN0aXF1ZS1lbi1ib2lzLWNvcGllLWVzcGFjZS5qcGc~'
+    // url: 'http://www.diycraftsguru.com/wp-content/uploads/2017/03/ultimate-real-food-eating-guide-and-recipes.jpg'
+    // url: 'https://life.spartan.com/wp-content/uploads/2018/03/wholefood.jpg'
+    // url: 'https://img.posterlounge.co.uk/images/wbig/poster-naturkost-1346435.jpg'
+    // url: 'https://img.posterlounge.co.uk/images/wbig/poster-naturkost-1346435.jpg'
   };
 
   handleContentChange = (content = ' ') => {
     this.setState({ content  });
   };
   
+  handleBackgroundChoose = (url = '') => {
+    this.setState({ url });
+  };
 
   render() { 
 
@@ -21,11 +30,12 @@ class App extends Component {
     return ( 
       <main className={styles.app}>
         <section>
-          <h2>Meme Project</h2>
+          <h2>Meme Food</h2>
           <Content content={content} onChange={this.handleContentChange}/>
+          <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
 
-        <section>
+        <section className="text">
           <Meme content={content} url={url}/>
         </section>
 
@@ -41,6 +51,22 @@ function Meme({ content, url }) {
     </Fragment> 
   );
 }
+
+function Background({ url, onChoose }) {
+  return (
+    <label>
+      Background: 
+      <input value={url} onChange={({ target }) => onChoose(target.value)}/>
+      <input type="file" onChange={({ target }) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = () => onChoose(reader.result);
+      }}/>
+    </label>
+  );
+}
+
+
 
 function Content({ content, onChange }) {
   return (
