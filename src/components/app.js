@@ -7,10 +7,10 @@ class App extends Component {
   
   state = {
     contentHeader: 'that feeling when',
-    contentFooter: 'you get out of bed to eat a night popsicle',
+    contentFooter: 'it\'s 4am & you\'re out of night soda',
     color: 'white',
-    textSize: '8',
-    url: 'https://www.austinchronicle.com/binary/27db/dolls.jpg'
+    textSize: '6',
+    url: 'https://i0.wp.com/catnamescity.com/wp-content/uploads/2012/08/Unisex-cat-names_cat-names-city_kitten-1.jpg?fit=650%2C650&ssl=1'
   };
 
   handleHeaderChange = ({ target }) => {
@@ -59,19 +59,23 @@ class App extends Component {
           <label>Top Text:<input value={contentHeader} onChange={this.handleHeaderChange}/></label>
           <label>Bottom Text:<input value={contentFooter} onChange={this.handleFooterChange}/></label>
           <label>Pick font color:<input type="color" value={color} onChange={this.handleColorChange}/></label>
-          <label>Add image url: <Background url={url} onChoose={this.handleBgChoose}/></label>
+          <label>Pick font size:<input type="text" value={textSize} onChange={this.handleTextChange}/></label>
+          <label>Add image (650px) url:<Background url={url} onChoose={this.handleBgChoose}/></label>
         </section>
 
-        <section className="meme-say">
+        <section>
           <div id="yourmeme">
             <h4>Your Meme:</h4>
           </div>
-          <div>
-            <MemeSays contentHeader={contentHeader} contentFooter={contentFooter} url={url} color={color} textSize={textSize}/>
-          </div>
-          <p>
-            <button onClick={this.handleExport}>SAVE</button>
-          </p>
+          <section className="meme-say">
+            <div>
+              <MemeSays contentHeader={contentHeader} contentFooter={contentFooter} url={url} color={color} textSize={textSize}/>
+            </div>
+            <p>
+              <br></br>
+              <button onClick={this.handleExport}>SAVE</button>
+            </p>
+          </section>
         </section>
       </main>
     );
