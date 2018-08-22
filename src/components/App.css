@@ -1,0 +1,91 @@
+:local(.app) {
+
+  .input-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .meme-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 650px;
+    height: auto;
+    margin-bottom: 60px;
+  }
+
+  .meme-say{
+    display: flex;
+    align-content: center;
+  }
+
+  label {
+    font-size: 18px; 
+  } 
+
+  button {
+    border-radius: 4px;
+    margin: 6px;
+    padding: 4px 6px 4px 6px;
+    font-size: 18px;
+  }
+
+  input {
+    border-radius: 4px;
+    margin: 6px;
+    padding: 4px;;
+    font-size: 18px;
+    width: 50%;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px;
+    display: inline-block;
+    padding: 20px;
+    font-size: 48px;
+    color: #e0dfdc;
+    background-color: #333;
+    letter-spacing: .1em;
+    text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+  }
+
+  h2 {
+    text-shadow: 2px 3px 10px black;
+    margin: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+    
+  h3 {
+    text-shadow: 2px 3px 10px black;
+    margin: 2%;
+    padding: 4px 2px 320px 2px;
+  
+  }
+
+  #yourmeme {
+    color: rgb(14, 9, 63);
+    font-size: 24px;
+  }
+}
