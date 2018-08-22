@@ -71,7 +71,17 @@ module.exports = {
             options: { sourceMap: true }
           }
         ]
+      },
+
+      // images
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { limit: 1000 },
+        },
       }
     ]
   }
-}
+};
+    
