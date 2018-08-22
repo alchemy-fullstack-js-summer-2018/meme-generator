@@ -72,7 +72,6 @@ class App extends Component {
               <MemeSays contentHeader={contentHeader} contentFooter={contentFooter} url={url} color={color} textSize={textSize}/>
             </div>
             <p>
-              <br></br>
               <button onClick={this.handleExport}>SAVE</button>
             </p>
           </section>
