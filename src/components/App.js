@@ -39,8 +39,8 @@ class App extends Component {
         </section>
 
         <section className="text">
-          <Meme content={content} url={url}/>
           <p ref={node => this.image = node}>
+            <Meme content={content} url={url}/>
           </p>
           <p>
             <button onClick={this.handleExport}>Export</button>
