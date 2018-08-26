@@ -8,11 +8,21 @@ class App extends Component {
 
   state ={
     content: 'I luv REAL Food!',
+    color: 'black',
+    fontSize: '5',
     url: 'https://www.castlighthealth.com/wp-content/uploads/2018/03/HealthyFood.jpg'
   };
   
   handleContentChange = (content = ' ') => {
     this.setState({ content  });
+  };
+
+  handleColorChange = ({ target }) => {
+    this.setState({ color: target.value });
+  };
+
+  handleTextChange = ({ target }) => {
+    this.setState({ fontSize: target.value });
   };
   
   handleBackgroundChoose = (url = '') => {
@@ -28,19 +38,21 @@ class App extends Component {
   
   render() { 
     
-    const { content, url } = this.state;
+    const { content, url, color, fontSize } = this.state;
     
     return ( 
       <main className={styles.app}>
         <section>
           <h2>Meme Food</h2>
           <Content content={content} onChange={this.handleContentChange}/>
+          <label>Pick font color:<input type="color" value={color} onChange={this.handleColorChange}/></label>
+          <label>Pick font size:<input type="text" value={fontSize} onChange={this.handleTextChange}/></label>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
 
         <section className="text">
           <p ref={node => this.image = node}>
-            <Meme content={content} url={url}/>
+            <Meme content={content} url={url} color={color} fontSize={fontSize}/>
           </p>
           <p>
             <button onClick={this.handleExport}>Export</button>
@@ -52,10 +64,12 @@ class App extends Component {
   }
 }
 
-function Meme({ content, url }) {
+function Meme({ content, url, color, fontSize }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
+      <div style={{ background: `url(${url}) no-repeat` }}>
+        <h2  style={{ color }}><font size={fontSize}>{content}</font></h2>
+      </div>
     </Fragment> 
   );
 }
