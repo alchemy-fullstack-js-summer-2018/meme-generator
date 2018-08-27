@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 import styles from './App.css';
 
 
@@ -6,37 +8,55 @@ class App extends Component {
 
   state ={
     content: 'I luv REAL Food!',
+    color: 'black',
+    fontSize: '5',
     url: 'https://www.castlighthealth.com/wp-content/uploads/2018/03/HealthyFood.jpg'
-    // url: 'https://bloximages.newyork1.vip.townnews.com/wtxl.com/content/tncms/assets/v3/editorial/f/4c/f4cfe044-2124-11e8-ba4e-933042f59627/5a9e66614e64b.image.jpg?resize=1200%2C630'
-    // url: 'https://media.eterritoire.fr/?u=aHR0cDovL2N0LWR3LmF5YWxpbmUuY29tOjgwL2ZpY2hpZXJzL2ZpY2hlcy9waG90b3MvNTg5MDE4NjEtbGVzLWxlZ3VtZXMtZXQtbGVzLWZydWl0cy1zdXItZm9uZC1ydXN0aXF1ZS1lbi1ib2lzLWNvcGllLWVzcGFjZS5qcGc~'
-    // url: 'http://www.diycraftsguru.com/wp-content/uploads/2017/03/ultimate-real-food-eating-guide-and-recipes.jpg'
-    // url: 'https://life.spartan.com/wp-content/uploads/2018/03/wholefood.jpg'
-    // url: 'https://img.posterlounge.co.uk/images/wbig/poster-naturkost-1346435.jpg'
-    // url: 'https://img.posterlounge.co.uk/images/wbig/poster-naturkost-1346435.jpg'
   };
-
+  
   handleContentChange = (content = ' ') => {
     this.setState({ content  });
+  };
+
+  handleColorChange = ({ target }) => {
+    this.setState({ color: target.value });
+  };
+
+  handleTextChange = ({ target }) => {
+    this.setState({ fontSize: target.value });
   };
   
   handleBackgroundChoose = (url = '') => {
     this.setState({ url });
   };
-
-  render() { 
-
-    const { content, url } = this.state;
   
+  handleExport = () => {
+    dom2image.toBlob(this.image)
+      .then(blob => {
+        fileSaver.saveAs(blob, 'cute-realfood.png');
+      });
+  };
+  
+  render() { 
+    
+    const { content, url, color, fontSize } = this.state;
+    
     return ( 
       <main className={styles.app}>
         <section>
           <h2>Meme Food</h2>
           <Content content={content} onChange={this.handleContentChange}/>
+          <label>Pick font color:<input type="color" value={color} onChange={this.handleColorChange}/></label>
+          <label>Pick font size:<input type="text" value={fontSize} onChange={this.handleTextChange}/></label>
           <Background url={url} onChoose={this.handleBackgroundChoose}/>
         </section>
 
         <section className="text">
-          <Meme content={content} url={url}/>
+          <p ref={node => this.image = node}>
+            <Meme content={content} url={url} color={color} fontSize={fontSize}/>
+          </p>
+          <p>
+            <button onClick={this.handleExport}>Export</button>
+          </p>
         </section>
 
       </main>
@@ -44,10 +64,12 @@ class App extends Component {
   }
 }
 
-function Meme({ content, url }) {
+function Meme({ content, url, color, fontSize }) {
   return (
     <Fragment>
-      <div style={{ background: `url(${url}) no-repeat` }}>{content}</div>
+      <div style={{ background: `url(${url}) no-repeat` }}>
+        <h2  style={{ color }}><font size={fontSize}>{content}</font></h2>
+      </div>
     </Fragment> 
   );
 }
@@ -80,8 +102,9 @@ function Content({ content, onChange }) {
       </label>
     </p>
   );
-
+  
 }
 
- 
-export default App;
+
+export default App;   
+
