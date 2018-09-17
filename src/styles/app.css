@@ -1,0 +1,31 @@
+:local(.app) {
+  h1 {
+    color: #000;
+  }
+
+  div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    font-size: 3em;
+    text-transform: uppercase;
+    font-family: Impact, sans-serif;
+    color: white;
+    -webkit-text-stroke: 1.5px black;
+  }
+
+  #top {
+    align-items: flex-start;
+    margin-bottom: auto;
+  }
+
+
+  input {
+    margin-left: 5px;
+  }
+
+  
+}
