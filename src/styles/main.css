@@ -1,3 +1,14 @@
-h1 {
-  color: red;
+
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  margin: 0;
+  height: 500px;
+}
+
+main {
+  padding: 0px 5px 20px 20px;
 }
